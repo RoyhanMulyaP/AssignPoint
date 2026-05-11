@@ -4,6 +4,9 @@
             "runtime": "vercel-php@0.6.1"
         }
     },
+    "env": {
+        "COMPOSER_INSTALL_FLAGS": "--ignore-platform-reqs"
+    },
     "routes": [
         {
             "src": "/favicon.ico",
