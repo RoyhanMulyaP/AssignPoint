@@ -1,10 +1,11 @@
 {
     "functions": {
         "api/index.php": {
-            "runtime": "vercel-php@0.6.3"
+            "runtime": "vercel-php"
         }
     },
     "env": {
+        "NODE_VERSION": "20",
         "COMPOSER_INSTALL_FLAGS": "--ignore-platform-reqs"
     },
     "routes": [
