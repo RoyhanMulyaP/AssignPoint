@@ -116,6 +116,8 @@ _modules/*
 *.stTheme.cache
 *.sublime-workspace
 *.sublime-project
+.phpintel
+/api/
 
 # Visual Studio Code
 .vscode/
