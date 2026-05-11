@@ -4,15 +4,18 @@
     <div class="max-w-md w-full">
         <!-- Logo dan Header -->
         <div class="text-center mb-10">
-            <div class="mx-auto w-20 h-20 bg-gradient-to-br from-red-600 to-red-800 rounded-2xl flex items-center justify-center shadow-2xl mb-4">
-                <span class="text-white text-3xl font-bold">AP</span>
+            <div class="inline-block relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-red-600 to-red-900 rounded-2xl blur opacity-25 group-hover:opacity-100 transition duration-1000"></div>
+                <div class="relative w-24 h-24 bg-gray-900 rounded-2xl flex items-center justify-center border border-gray-800 shadow-2xl">
+                    <svg class="w-14 h-14 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                    </svg>
+                </div>
             </div>
-            <h2 class="text-4xl font-extrabold text-white tracking-tight">
-                Access Login
+            <h2 class="text-4xl font-black tracking-tighter text-white mt-6 uppercase">
+                ASSIGN<span class="text-red-600">POINT</span>
             </h2>
-            <!-- <p class="mt-3 text-lg text-gray-400">
-                Masuk ke sistem inventaris Axioo Pongo
-            </p> -->
+            <p class="text-xs text-gray-500 uppercase tracking-[0.2em] font-bold mt-1">System Access</p>
         </div>
 
         <!-- Form Login -->

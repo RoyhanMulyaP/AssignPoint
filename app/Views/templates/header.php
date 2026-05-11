@@ -66,44 +66,45 @@
     </style>
 </head>
 
-<body class="bg-gray-900 text-gray-100 min-h-screen">
+<body class="bg-gray-900 text-gray-100 min-h-screen overflow-x-hidden">
     <!-- Navigation -->
     <nav class="gradient-bg shadow-xl relative z-[9999]">
         <div class="container mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-2">
-                    <div class="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center">
-                        <span class="font-bold text-white text-xl">AP</span>
+                <div class="flex items-center space-x-3 group cursor-pointer">
+                    <div class="relative">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-red-600 to-red-900 rounded-xl blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                        <div class="relative w-12 h-12 bg-gray-900 rounded-xl flex items-center justify-center border border-gray-800 shadow-2xl">
+                            <svg class="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                            </svg>
+                        </div>
                     </div>
-                    <a href="<?= base_url() ?>" class="text-2xl font-bold text-white">
-                        Assign<span class="text-red-500">Point</span>
+                    <a href="<?= base_url() ?>" class="flex flex-col">
+                        <span class="text-2xl font-black tracking-tighter text-white leading-none">ASSIGN<span class="text-red-600">POINT</span></span>
+                        <span class="text-[10px] text-gray-500 uppercase tracking-[0.2em] font-bold">Inventory System</span>
                     </a>
                 </div>
 
-                <div class="hidden md:flex space-x-6 items-center">
+                <div class="hidden md:flex space-x-8 items-center">
                     <a href="<?= base_url('/') ?>"
-                        class="<?= (isset($active) && $active == 'home') ? 'text-red-400 font-semibold' : 'text-gray-300 hover:text-red-400' ?>">
-                        Home
+                        class="<?= (isset($active) && $active == 'home') ? 'text-red-500 font-bold border-b-2 border-red-500' : 'text-gray-400 hover:text-white transition-colors duration-200' ?>">
+                        Beranda
                     </a>
                     <a href="<?= base_url('about') ?>"
-                        class="<?= (isset($active) && $active == 'about') ? 'text-red-400 font-semibold' : 'text-gray-300 hover:text-red-400' ?>">
-                        About
+                        class="<?= (isset($active) && $active == 'about') ? 'text-red-500 font-bold border-b-2 border-red-500' : 'text-gray-400 hover:text-white transition-colors duration-200' ?>">
+                        Tentang
                     </a>
 
                     <?php if (session()->get('isLoggedIn')): ?>
                         <a href="<?= base_url('user/dashboard') ?>"
-                            class="<?= (isset($active) && $active == 'dashboard') ? 'text-red-400 font-semibold' : 'text-gray-300 hover:text-red-400' ?>">
-                            Dashboard
+                            class="<?= (isset($active) && $active == 'dashboard') ? 'text-red-500 font-bold border-b-2 border-red-500' : 'text-gray-400 hover:text-white transition-colors duration-200' ?>">
+                            Panel User
                         </a>
 
                         <a href="<?= base_url('user/inventaris') ?>"
-                            class="<?= (isset($active) && $active == 'inventaris') ? 'text-red-400 font-semibold' : 'text-gray-300 hover:text-red-400' ?>">
-                            List
-                        </a>
-
-                        <a href="<? base_url('user/peminjaman') ?>"
-                            class="<?= (isset($active) && ($active == 'peminjaman' || $active == 'riwayat')) ? 'text-red-400 font-semibold' : 'text-gray-300 hover:text-red-400' ?> hidden">
-                            Peminjaman
+                            class="<?= (isset($active) && $active == 'inventaris') ? 'text-red-500 font-bold border-b-2 border-red-500' : 'text-gray-400 hover:text-white transition-colors duration-200' ?>">
+                            Katalog
                         </a>
                     <?php endif; ?>
                 </div>
@@ -111,38 +112,7 @@
                 <div class="flex items-center space-x-4">
                     <?php if (session()->get('isLoggedIn')): ?>
                         <!-- Notifications for both admin and user -->
-                        <div class="relative">
-                            <button id="notificationBtn" class="p-2 text-gray-400 hover:text-white relative">
-                                <i class="fas fa-bell text-xl"></i>
-                                <?php if (session()->get('role') == 'admin'): ?>
-                                    <span class="absolute -top-1 -right-1 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">5</span>
-                                <?php else: ?>
-                                    <span class="absolute -top-1 -right-1 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">2</span>
-                                <?php endif; ?>
-                            </button>
-                            <div id="notificationDropdown" class="hidden absolute right-0 mt-2 w-80 bg-gray-800 border border-gray-700 rounded-lg shadow-xl z-50">
-                                <div class="p-4 border-b border-gray-700">
-                                    <h3 class="font-semibold text-white">Notifikasi</h3>
-                                    <p class="text-xs text-gray-400">
-                                        <?php if (session()->get('role') == 'admin'): ?>
-                                            Anda memiliki 5 notifikasi baru
-                                        <?php else: ?>
-                                            Anda memiliki 2 notifikasi baru
-                                        <?php endif; ?>
-                                    </p>
-                                </div>
-                                <div class="max-h-96 overflow-y-auto">
-                                    <!-- Notification items would be loaded here -->
-                                    <div class="p-4 border-b border-gray-700 hover:bg-gray-700 cursor-pointer">
-                                        <p class="text-sm text-white">Peminjaman baru diajukan</p>
-                                        <p class="text-xs text-gray-400 mt-1">2 menit yang lalu</p>
-                                    </div>
-                                </div>
-                                <div class="p-4 border-t border-gray-700">
-                                    <a href="#" class="text-red-400 hover:text-red-300 text-sm font-medium">Lihat semua notifikasi</a>
-                                </div>
-                            </div>
-                        </div>
+
 
                         <div class="relative group">
                             <button class="flex items-center space-x-2 hover:bg-gray-800 p-2 rounded-lg">
@@ -184,8 +154,26 @@
                             class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-semibold transition duration-300">
                             Register
                         </a>
+                        </a>
                     <?php endif; ?>
+                    
+                    <!-- Mobile menu button -->
+                    <button id="mobileMenuButton" class="md:hidden text-gray-300 hover:text-white p-2 ml-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
                 </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-gray-800 border-t border-gray-700">
+            <div class="px-4 py-3 space-y-3">
+                <a href="<?= base_url('/') ?>" class="block <?= (isset($active) && $active == 'home') ? 'text-red-400 font-semibold' : 'text-gray-300 hover:text-red-400' ?>">Beranda</a>
+                <a href="<?= base_url('about') ?>" class="block <?= (isset($active) && $active == 'about') ? 'text-red-400 font-semibold' : 'text-gray-300 hover:text-red-400' ?>">Tentang</a>
+                <?php if (session()->get('isLoggedIn')): ?>
+                    <a href="<?= base_url('user/dashboard') ?>" class="block <?= (isset($active) && $active == 'dashboard') ? 'text-red-500 font-bold' : 'text-gray-300 hover:text-white' ?>">Panel User</a>
+                    <a href="<?= base_url('user/inventaris') ?>" class="block <?= (isset($active) && $active == 'inventaris') ? 'text-red-500 font-bold' : 'text-gray-300 hover:text-white' ?>">Katalog</a>
+                <?php endif; ?>
             </div>
         </div>
     </nav>

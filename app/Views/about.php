@@ -30,10 +30,10 @@
             </div>
         </div>
     </div>
-    <!-- Animated Background Elements -->
-    <div class="absolute top-0 left-0 w-72 h-72 bg-red-900 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-    <div class="absolute top-0 right-0 w-72 h-72 bg-red-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-    <div class="absolute -bottom-8 left-1/2 w-72 h-72 bg-red-800 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+    <!-- Background Elements (Optimized for performance) -->
+    <div class="absolute top-0 left-0 w-64 h-64 md:w-72 md:h-72 bg-red-900 rounded-full filter blur-3xl opacity-20"></div>
+    <div class="absolute top-0 right-0 w-64 h-64 md:w-72 md:h-72 bg-red-600 rounded-full filter blur-3xl opacity-20"></div>
+    <div class="absolute -bottom-8 left-1/2 w-64 h-64 md:w-72 md:h-72 bg-red-800 rounded-full filter blur-3xl opacity-20"></div>
 </section>
 
 <!-- Mission & Vision -->
@@ -169,19 +169,19 @@
     <div class="bg-gradient-to-r from-gray-900 to-gray-800 rounded-2xl p-8 border border-gray-700">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div class="text-center">
-                <div class="text-4xl md:text-5xl font-bold text-red-400 mb-2" id="stat-users">500+</div>
+                <div class="text-4xl md:text-5xl font-bold text-red-400 mb-2 stat-value" data-value="500" data-suffix="+">0</div>
                 <div class="text-gray-400">Pengguna Aktif</div>
             </div>
             <div class="text-center">
-                <div class="text-4xl md:text-5xl font-bold text-red-400 mb-2" id="stat-items">1K+</div>
+                <div class="text-4xl md:text-5xl font-bold text-red-400 mb-2 stat-value" data-value="1000" data-suffix="+">0</div>
                 <div class="text-gray-400">Barang Terkelola</div>
             </div>
             <div class="text-center">
-                <div class="text-4xl md:text-5xl font-bold text-red-400 mb-2" id="stat-loans">2K+</div>
+                <div class="text-4xl md:text-5xl font-bold text-red-400 mb-2 stat-value" data-value="2000" data-suffix="+">0</div>
                 <div class="text-gray-400">Peminjaman</div>
             </div>
             <div class="text-center">
-                <div class="text-4xl md:text-5xl font-bold text-red-400 mb-2" id="stat-uptime">99.9%</div>
+                <div class="text-4xl md:text-5xl font-bold text-red-400 mb-2 stat-value" data-value="99" data-suffix=".9%">0</div>
                 <div class="text-gray-400">Uptime Sistem</div>
             </div>
         </div>
@@ -339,7 +339,7 @@
                 <?php else: ?>
                     <a href="<?= base_url('user/dashboard') ?>"
                         class="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300">
-                        Dashboard User
+                        Panel User
                     </a>
                 <?php endif; ?>
             <?php else: ?>
@@ -358,36 +358,7 @@
 
 <!-- Update tambahan untuk animasi di bagian style -->
 <style>
-    /* Animation for blob elements */
-    @keyframes blob {
-        0% {
-            transform: translate(0px, 0px) scale(1);
-        }
-
-        33% {
-            transform: translate(30px, -50px) scale(1.1);
-        }
-
-        66% {
-            transform: translate(-20px, 20px) scale(0.9);
-        }
-
-        100% {
-            transform: translate(0px, 0px) scale(1);
-        }
-    }
-
-    .animate-blob {
-        animation: blob 7s infinite;
-    }
-
-    .animation-delay-2000 {
-        animation-delay: 2s;
-    }
-
-    .animation-delay-4000 {
-        animation-delay: 4s;
-    }
+    /* Add custom styling if needed */
 
     /* Hover lift effect */
     .hover-lift {
@@ -490,7 +461,40 @@
     .feature-card:nth-child(3) { animation-delay: 0.3s; }
     .feature-card:nth-child(4) { animation-delay: 0.4s; }
 `;
-    document.head.appendChild(style);
+    document.head.appendChild(style);    </div>
+</section>
+
+<script>
+    // Stats Count Up Animation
+    function animateValue(obj, start, end, duration) {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            obj.innerHTML = Math.floor(progress * (end - start) + start) + (obj.dataset.suffix || '');
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+        window.requestAnimationFrame(step);
+    }
+
+    const observerOptions = {
+        threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                const target = entry.target;
+                const endValue = parseInt(target.dataset.value);
+                animateValue(target, 0, endValue, 2000);
+                target.classList.add('animated');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.stat-value').forEach(el => observer.observe(el));
 </script>
 
 <?= $this->include('templates/footer') ?>

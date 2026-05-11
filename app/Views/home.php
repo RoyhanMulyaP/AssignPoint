@@ -5,9 +5,14 @@
     <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-red-900/40"></div>
     <div class="container mx-auto px-4 py-20 md:py-28 relative z-10">
         <div class="max-w-4xl mx-auto text-center">
-            <div class="inline-flex items-center justify-center mb-6">
-                <div class="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center">
-                    <span class="font-bold text-white text-xl">AP</span>
+            <div class="inline-flex items-center justify-center mb-8">
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-red-600 to-red-900 rounded-2xl blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                    <div class="relative w-20 h-20 bg-gray-900 rounded-2xl flex items-center justify-center border border-gray-800 shadow-2xl">
+                        <svg class="w-12 h-12 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                        </svg>
+                    </div>
                 </div>
             </div>
 
@@ -46,7 +51,7 @@
                         <a href="<?= base_url('user/dashboard') ?>"
                             class="bg-gradient-to-r from-red-600 to-red-700 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-transform duration-200">
                             <i class="fas fa-tachometer-alt mr-2"></i>
-                            Dashboard User
+                            Panel User
                         </a>
                     <?php endif; ?>
                 <?php endif; ?>
@@ -77,10 +82,10 @@
         </div>
     </div>
 
-    <!-- Animated Background Elements -->
-    <div class="absolute top-0 left-0 w-72 h-72 bg-red-900 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-    <div class="absolute top-0 right-0 w-72 h-72 bg-red-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-    <div class="absolute -bottom-8 left-1/2 w-72 h-72 bg-red-800 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+    <!-- Background Elements (Optimized for performance) -->
+    <div class="absolute top-0 left-0 w-64 h-64 md:w-72 md:h-72 bg-red-900 rounded-full filter blur-3xl opacity-20"></div>
+    <div class="absolute top-0 right-0 w-64 h-64 md:w-72 md:h-72 bg-red-600 rounded-full filter blur-3xl opacity-20"></div>
+    <div class="absolute -bottom-8 left-1/2 w-64 h-64 md:w-72 md:h-72 bg-red-800 rounded-full filter blur-3xl opacity-20"></div>
 </section>
 
 <!-- Overview Section -->
@@ -119,27 +124,27 @@
                 </li>
             </ul>
         </div>
-        <div class="flex justify-center">
+        <div class="flex justify-center mt-8 lg:mt-0">
             <div class="relative">
-                <div class="w-80 h-80 bg-gradient-to-br from-red-900/20 to-red-600/20 rounded-3xl border border-red-700/30 p-8 shadow-2xl backdrop-blur-sm">
+                <div class="w-64 h-64 sm:w-80 sm:h-80 bg-gradient-to-br from-red-900/20 to-red-600/20 rounded-3xl border border-red-700/30 p-6 sm:p-8 shadow-2xl backdrop-blur-sm flex flex-col justify-center">
                     <div class="text-center">
-                        <div class="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-red-600 to-red-800 rounded-2xl flex items-center justify-center">
-                            <i class="fas fa-chart-line text-white text-4xl"></i>
+                        <div class="w-16 h-16 sm:w-24 sm:h-24 mx-auto mb-4 sm:mb-6 bg-gradient-to-br from-red-600 to-red-800 rounded-2xl flex items-center justify-center">
+                            <i class="fas fa-chart-line text-white text-3xl sm:text-4xl"></i>
                         </div>
-                        <h4 class="text-xl font-bold text-white mb-3">Efisiensi Meningkat 60%</h4>
-                        <p class="text-gray-300">Pengguna melaporkan peningkatan efisiensi yang signifikan</p>
+                        <h4 class="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">Efisiensi Meningkat 60%</h4>
+                        <p class="text-xs sm:text-sm text-gray-300">Pengguna melaporkan peningkatan efisiensi yang signifikan</p>
                     </div>
                 </div>
-                <div class="absolute -top-6 -right-6 w-32 h-32 bg-red-900/20 rounded-2xl border border-red-700/30 p-4 backdrop-blur-sm">
+                <div class="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 w-24 h-24 sm:w-32 sm:h-32 bg-red-900/20 rounded-2xl border border-red-700/30 p-3 sm:p-4 backdrop-blur-sm flex flex-col justify-center">
                     <div class="text-center">
-                        <div class="text-3xl font-bold text-red-400">500+</div>
-                        <div class="text-sm text-gray-300">Pengguna Aktif</div>
+                        <div class="text-xl sm:text-3xl font-bold text-red-400">500+</div>
+                        <div class="text-xs sm:text-sm text-gray-300">Pengguna Aktif</div>
                     </div>
                 </div>
-                <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-red-900/20 rounded-2xl border border-red-700/30 p-4 backdrop-blur-sm">
+                <div class="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 w-24 h-24 sm:w-32 sm:h-32 bg-red-900/20 rounded-2xl border border-red-700/30 p-3 sm:p-4 backdrop-blur-sm flex flex-col justify-center">
                     <div class="text-center">
-                        <div class="text-3xl font-bold text-red-400">99.8%</div>
-                        <div class="text-sm text-gray-300">Uptime Sistem</div>
+                        <div class="text-xl sm:text-3xl font-bold text-red-400">99.8%</div>
+                        <div class="text-xs sm:text-sm text-gray-300">Uptime Sistem</div>
                     </div>
                 </div>
             </div>
@@ -407,17 +412,17 @@
 
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div class="text-center p-6">
-                <div class="text-4xl md:text-5xl font-bold text-red-400 mb-3" id="stat-users">500+</div>
+                <div class="text-4xl md:text-5xl font-bold text-red-400 mb-3" id="stat-users"><?= $totalUsers ?></div>
                 <div class="text-gray-400 text-lg">Pengguna Aktif</div>
                 <p class="text-gray-500 text-sm mt-2">Dari berbagai institusi</p>
             </div>
             <div class="text-center p-6">
-                <div class="text-4xl md:text-5xl font-bold text-red-400 mb-3" id="stat-items">1.2K+</div>
+                <div class="text-4xl md:text-5xl font-bold text-red-400 mb-3" id="stat-items"><?= $totalItems ?></div>
                 <div class="text-gray-400 text-lg">Barang Terkelola</div>
                 <p class="text-gray-500 text-sm mt-2">Dalam sistem aktif</p>
             </div>
             <div class="text-center p-6">
-                <div class="text-4xl md:text-5xl font-bold text-red-400 mb-3" id="stat-loans">2.5K+</div>
+                <div class="text-4xl md:text-5xl font-bold text-red-400 mb-3" id="stat-loans"><?= $totalLoans ?></div>
                 <div class="text-gray-400 text-lg">Transaksi Peminjaman</div>
                 <p class="text-gray-500 text-sm mt-2">Berhasil diproses</p>
             </div>
@@ -428,22 +433,7 @@
             </div>
         </div>
 
-        <div class="mt-12 pt-8 border-t border-gray-700">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="text-center">
-                    <div class="text-2xl font-bold text-green-400 mb-2">96%</div>
-                    <div class="text-gray-400">Kepuasan Pengguna</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-2xl font-bold text-yellow-400 mb-2">60%</div>
-                    <div class="text-gray-400">Peningkatan Efisiensi</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-2xl font-bold text-blue-400 mb-2">45%</div>
-                    <div class="text-gray-400">Pengurangan Biaya</div>
-                </div>
-            </div>
-        </div>
+
     </div>
 </section>
 
@@ -587,7 +577,7 @@
         </div>
 
         <!-- Step 4 -->
-        <div class="text-center">
+        <div class="relative text-center">
             <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
                 <div class="w-12 h-12 rounded-full bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center text-white text-xl font-bold shadow-lg">
                     4
@@ -606,90 +596,132 @@
 
 <!-- Testimonials -->
 <section class="mb-20">
-    <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Apa Kata Pengguna Kami?</h2>
-        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
-            Pengalaman nyata dari institusi yang telah menggunakan Assign Point.
-        </p>
+    <div class="flex flex-col md:flex-row justify-between items-center mb-12">
+        <div class="text-center md:text-left mb-8 md:mb-0">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Apa Kata Pengguna Kami?</h2>
+            <p class="text-xl text-gray-400 max-w-2xl">
+                Pengalaman nyata dari institusi yang telah menggunakan Assign Point.
+            </p>
+        </div>
+        <?php if (session()->get('isLoggedIn')): ?>
+            <button onclick="document.getElementById('reviewModal').classList.remove('hidden')"
+                class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-xl font-bold transition-all shadow-lg shadow-red-600/20">
+                <i class="fas fa-edit mr-2"></i> Beri Ulasan
+            </button>
+        <?php endif; ?>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Testimonial 1 -->
-        <div class="bg-gray-800/50 rounded-2xl p-8 border border-gray-700">
-            <div class="flex items-center mb-6">
-                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center mr-4">
-                    <span class="text-white font-bold">SM</span>
+        <?php if (empty($testimonials)): ?>
+            <!-- Default Testimonials if database is empty -->
+            <div class="bg-gray-800/50 rounded-2xl p-8 border border-gray-700">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center mr-4 font-bold text-white">SM</div>
+                    <div>
+                        <h4 class="font-bold text-white">SMA Negeri Assign Point</h4>
+                        <p class="text-gray-400 text-sm">Sekolah Negeri</p>
+                    </div>
                 </div>
-                <div>
-                    <h4 class="font-bold text-white">SMA Negeri 1 Jakarta</h4>
-                    <p class="text-gray-400 text-sm">Sekolah Negeri</p>
-                </div>
-            </div>
-            <p class="text-gray-300 mb-6 italic">
-                "Assign Point benar-benar mengubah cara kami mengelola lab komputer. Proses peminjaman yang dulunya memakan waktu 30 menit, sekarang hanya 5 menit!"
-            </p>
-            <div class="flex text-yellow-400">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-            </div>
-        </div>
-
-        <!-- Testimonial 2 -->
-        <div class="bg-gray-800/50 rounded-2xl p-8 border border-gray-700">
-            <div class="flex items-center mb-6">
-                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center mr-4">
-                    <span class="text-white font-bold">PT</span>
-                </div>
-                <div>
-                    <h4 class="font-bold text-white">PT Teknologi Maju</h4>
-                    <p class="text-gray-400 text-sm">Perusahaan IT</p>
+                <p class="text-gray-300 mb-6 italic">"Assign Point benar-benar mengubah cara kami mengelola lab komputer. Sangat efisien!"</p>
+                <div class="flex text-yellow-400">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
             </div>
-            <p class="text-gray-300 mb-6 italic">
-                "Sistem ini sangat membantu tim operasional kami. Pelacakan aset menjadi sangat akurat dan laporan inventaris otomatis menghemat banyak waktu."
-            </p>
-            <div class="flex text-yellow-400">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-        </div>
-
-        <!-- Testimonial 3 -->
-        <div class="bg-gray-800/50 rounded-2xl p-8 border border-gray-700">
-            <div class="flex items-center mb-6">
-                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-600 to-green-800 flex items-center justify-center mr-4">
-                    <span class="text-white font-bold">UN</span>
+            <div class="bg-gray-800/50 rounded-2xl p-8 border border-gray-700">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center mr-4 font-bold text-white">PT</div>
+                    <div>
+                        <h4 class="font-bold text-white">PT Teknologi Maju</h4>
+                        <p class="text-gray-400 text-sm">Perusahaan IT</p>
+                    </div>
                 </div>
-                <div>
-                    <h4 class="font-bold text-white">Universitas Negeri</h4>
-                    <p class="text-gray-400 text-sm">Perguruan Tinggi</p>
+                <p class="text-gray-300 mb-6 italic">"Sistem ini sangat membantu tim operasional kami. Pelacakan aset menjadi sangat akurat."</p>
+                <div class="flex text-yellow-400">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
             </div>
-            <p class="text-gray-300 mb-6 italic">
-                "Dengan 5000+ item inventaris, sistem ini memudahkan manajemen aset kampus. Interface yang intuitif membuat staf dengan cepat beradaptasi."
-            </p>
-            <div class="flex text-yellow-400">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
+            <div class="bg-gray-800/50 rounded-2xl p-8 border border-gray-700">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-600 to-green-800 flex items-center justify-center mr-4 font-bold text-white">UN</div>
+                    <div>
+                        <h4 class="font-bold text-white">Universitas Negeri</h4>
+                        <p class="text-gray-400 text-sm">Perguruan Tinggi</p>
+                    </div>
+                </div>
+                <p class="text-gray-300 mb-6 italic">"Interface yang intuitif membuat staf dengan cepat beradaptasi. Sangat direkomendasikan!"</p>
+                <div class="flex text-yellow-400">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
             </div>
-        </div>
+        <?php else: ?>
+            <?php foreach ($testimonials as $t): ?>
+                <div class="bg-gray-800/50 rounded-2xl p-8 border border-gray-700">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center mr-4">
+                            <span class="text-white font-bold"><?= substr($t['name'], 0, 2) ?></span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white"><?= esc($t['name']) ?></h4>
+                            <p class="text-gray-400 text-sm"><?= ucfirst(esc($t['role'])) ?></p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6 italic">
+                        "<?= esc($t['comment']) ?>"
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <?php for ($i = 1; $i <= 5; $i++): ?>
+                            <i class="<?= $i <= $t['rating'] ? 'fas' : 'far' ?> fa-star"></i>
+                        <?php endfor; ?>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </div>
 </section>
+
+<!-- Review Modal -->
+<div id="reviewModal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+    <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+        <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+            <div class="absolute inset-0 bg-black opacity-75"></div>
+        </div>
+        <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+        <div class="inline-block align-bottom bg-gray-900 rounded-2xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full border border-gray-700">
+            <div class="px-6 py-4 border-b border-gray-800 flex justify-between items-center">
+                <h3 class="text-xl font-bold text-white">Beri Ulasan Kami</h3>
+                <button onclick="document.getElementById('reviewModal').classList.add('hidden')" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form action="<?= base_url('testimonials/submit') ?>" method="POST" class="p-6">
+                <div class="mb-6">
+                    <label class="block text-gray-400 text-sm mb-2">Rating</label>
+                    <div class="flex space-x-2 text-2xl text-gray-600">
+                        <?php for ($i = 1; $i <= 5; $i++): ?>
+                            <input type="radio" name="rating" id="star<?= $i ?>" value="<?= $i ?>" class="hidden peer" required>
+                            <label for="star<?= $i ?>" class="cursor-pointer hover:text-yellow-400 peer-checked:text-yellow-400">
+                                <i class="fas fa-star"></i>
+                            </label>
+                        <?php endfor; ?>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-400 text-sm mb-2">Komentar</label>
+                    <textarea name="comment" rows="4" class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-red-600 outline-none transition-all" placeholder="Tulis pengalaman Anda menggunakan Assign Point..." required minlength="10"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl transition-all shadow-lg shadow-red-600/20">
+                    Kirim Ulasan
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
 
 <!-- CTA Section -->
 <section class="mb-16">
     <div class="bg-gradient-to-r from-red-900/30 to-red-800/30 rounded-2xl p-12 border border-red-800/50 text-center relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-32 h-32 bg-red-900 rounded-full opacity-10 -translate-x-16 -translate-y-16"></div>
-        <div class="absolute bottom-0 right-0 w-32 h-32 bg-red-600 rounded-full opacity-10 translate-x-16 translate-y-16"></div>
+        <div class="absolute top-0 left-0 w-24 h-24 sm:w-32 sm:h-32 bg-red-900 rounded-full opacity-10 -translate-x-8 -translate-y-8 sm:-translate-x-16 sm:-translate-y-16"></div>
+        <div class="absolute bottom-0 right-0 w-24 h-24 sm:w-32 sm:h-32 bg-red-600 rounded-full opacity-10 translate-x-8 translate-y-8 sm:translate-x-16 sm:translate-y-16"></div>
 
         <div class="relative z-10">
             <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
@@ -708,7 +740,7 @@
                     <?php else: ?>
                         <a href="<?= base_url('user/dashboard') ?>"
                             class="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300">
-                            Masuk Dashboard User
+                            Masuk Panel User
                         </a>
                     <?php endif; ?>
                 <?php else: ?>
@@ -782,37 +814,6 @@
 <?= $this->include('templates/footer') ?>
 
 <style>
-    /* Animation for blob elements */
-    @keyframes blob {
-        0% {
-            transform: translate(0px, 0px) scale(1);
-        }
-
-        33% {
-            transform: translate(30px, -50px) scale(1.1);
-        }
-
-        66% {
-            transform: translate(-20px, 20px) scale(0.9);
-        }
-
-        100% {
-            transform: translate(0px, 0px) scale(1);
-        }
-    }
-
-    .animate-blob {
-        animation: blob 7s infinite;
-    }
-
-    .animation-delay-2000 {
-        animation-delay: 2s;
-    }
-
-    .animation-delay-4000 {
-        animation-delay: 4s;
-    }
-
     /* Hover lift effect */
     .hover-lift {
         transition: transform 0.3s ease, box-shadow 0.3s ease;

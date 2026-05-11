@@ -17,14 +17,53 @@ class InventarisController extends BaseController
 
     public function index()
     {
+        $loanModel = new \App\Models\LoanModel();
+
+        $totalItems = $this->inventarisModel->countAllResults();
+        $totalStok = $this->inventarisModel->selectSum('stok')->get()->getRow()->stok ?? 0;
+        $totalDipinjam = $this->inventarisModel->selectSum('dipinjam')->get()->getRow()->dipinjam ?? 0;
+        $totalTersedia = $totalStok - $totalDipinjam;
+
         $data = [
             'title'      => 'Manajemen Inventaris',
-            'inventaris' => $this->inventarisModel->paginate(10),
+            'inventaris' => $this->inventarisModel->orderBy('id', 'ASC')->paginate(10),
             'pager'      => $this->inventarisModel->pager,
-            'isAdmin'    => session()->get('role') === 'admin'
+            'isAdmin'    => session()->get('role') === 'admin',
+            'stats'      => [
+                'totalItems' => $totalItems,
+                'totalStok' => $totalStok,
+                'totalDipinjam' => $totalDipinjam,
+                'totalTersedia' => $totalTersedia
+            ]
         ];
 
         return view('inventaris/index', $data);
+    }
+
+    public function getStats()
+    {
+        $totalItems = $this->inventarisModel->countAllResults();
+        $totalStok = $this->inventarisModel->selectSum('stok')->get()->getRow()->stok ?? 0;
+        $totalDipinjam = $this->inventarisModel->selectSum('dipinjam')->get()->getRow()->dipinjam ?? 0;
+        $totalTersedia = $totalStok - $totalDipinjam;
+
+        return $this->response->setJSON([
+            'totalItems' => (int)$totalItems,
+            'totalStok' => (int)$totalStok,
+            'totalDipinjam' => (int)$totalDipinjam,
+            'totalTersedia' => (int)$totalTersedia
+        ]);
+    }
+
+    public function getLatestInventory()
+    {
+        $items = $this->inventarisModel->orderBy('id', 'ASC')->findAll();
+        // Add full URL to photo
+        foreach ($items as &$item) {
+            $item['foto_url'] = base_url('uploads/' . $item['foto']);
+            $item['tersedia'] = $item['stok'] - $item['dipinjam'];
+        }
+        return $this->response->setJSON($items);
     }
 
     // Detail barang

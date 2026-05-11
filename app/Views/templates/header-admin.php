@@ -83,7 +83,7 @@
     </style>
 </head>
 
-<body class="bg-gray-900 text-gray-100">
+<body class="bg-gray-900 text-gray-100 overflow-x-hidden">
     <div class="min-h-screen">
         <?= $this->renderSection('content') ?>
     </div>
